@@ -1,0 +1,26 @@
+package com.pl.mapper;
+
+import com.pl.pojo.Employee;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+@Mapper
+@Repository
+public interface EmployeeMapper {
+    // 获取所有员工信息
+    List<Employee> queryEmployee();
+
+    // 通过id获得员工
+    Employee queryEmployeeById(Integer id);
+
+    //增加员工
+    int addEmployee(Employee employee);
+
+    //修改员工
+    int updateEmployee(Employee employee);
+
+    //删除员工
+    int deleteEmployeeById(Integer id);
+
+}

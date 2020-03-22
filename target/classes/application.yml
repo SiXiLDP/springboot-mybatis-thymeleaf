@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: 537520
+    #serverTimezone=UTC有时不设置会报错，所以习惯性加上
+    url: jdbc:mysql://localhost:3306/emp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+# 我们的配置文件放在的真实位置
+  messages:
+    basename: i18n.login
+mybatis:
+  type-aliases-package: com.pl.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml

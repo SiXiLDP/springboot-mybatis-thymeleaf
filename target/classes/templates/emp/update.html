@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carbon - Admin Template</title>
+  <link rel="stylesheet" th:href="@{/vendor/simple-line-icons/css/simple-line-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/fontawesome-all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+  <div class="page-header">
+    <div th:replace="~{common/common::navbar}"></div>
+  </div>
+
+  <div class="main-container">
+    <div th:replace="~{common/common::sidebar(active='tables.html')}"></div>
+    <div class="content">
+      <div class="col-md-5" >
+        <form class="card p-4" th:action="@{/updateEmp}" method="post" style="background-color: #ecd3d3">
+          <div style="background-color: #fbb5b5"  class="card-header text-center text-uppercase h4 font-weight-light">
+            修改员工
+          </div>
+          <input type="hidden" name="id" th:value="${emps.id}">
+          <div class="card-body py-5">
+            <div class="form-group">
+              <label class="form-control-label">用户名</label>
+              <input name="name" th:value="${emps.name}" type="text" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label">邮箱</label>
+              <input name="email" th:value="${emps.email}" type="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label">性别</label>
+              <div class="form-check form-check-inline">
+                <input th:checked="${emps.gender==1}" class="form-check-input" type="radio" checked name="gender" value="1">
+                <label class="form-check-label">男</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input th:checked="${emps.gender==0}" class="form-check-input" type="radio" name="gender" value="0">
+                <label class="form-check-label">女</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Department</label>
+              <select class="form-control" name="department">
+                <option th:each="dept:${depts}" th:selected="${dept.department==emps.department}" th:text="${dept.department}" th:value="${dept.department}"></option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">生日</label>
+              <input name="birth" th:value="${emps.birth}" type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="card-footer" style="background-color: #ecd3d3">
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary px-5">修改</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/popper.js/popper.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/chart.js/chart.min.js}"></script>
+<script th:src="@{/js/carbon.js}"></script>
+<script th:src="@{/js/demo.js}"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<nav class="navbar page-header" th:fragment="navbar">
+  <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <a class="navbar-brand" href="#">
+    <img th:src="@{/imgs/logo.png}" alt="logo">
+  </a>
+
+  <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-danger">5</span>
+      </a>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a href="#">
+        <i class="fa fa-envelope-open"></i>
+        <span class="badge badge-pill badge-danger">5</span>
+      </a>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img th:src="@{/imgs/avatar-1.png}" class="avatar avatar-sm" alt="logo">
+        <span class="small ml-1 d-md-down-none">[[${session.LoginUser}]]</span>
+      </a><!--获取session中的用户名并显示-->
+
+      <div class="dropdown-menu dropdown-menu-right">
+        <a th:href="@{/user/logout}" class="dropdown-item">
+          <i class="fa fa-lock"></i> 注销
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="sidebar" th:fragment="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-title">Navigation</li>
+
+      <li class="nav-item">
+        <!--通过传递过来的参数使用三元运算符，决定是否为高光状态，即焦点所在-->
+        <a th:href="@{/main.html}" th:class="${active=='main.html'?'nav-link active':'nav-link'}">
+          <i class="icon icon-speedometer"></i> 首页
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a th:href="@{/emps}" th:class="${active=='tables.html'?'nav-link active':'nav-link'}">
+          <i class="icon icon-grid"></i> 员工管理
+        </a>
+      </li>
+
+
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>

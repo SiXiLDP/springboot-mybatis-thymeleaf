@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carbon - Admin Template</title>
+  <link rel="stylesheet" th:href="@{/vendor/simple-line-icons/css/simple-line-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/fontawesome-all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="page-wrapper flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <form class="col-md-5" th:action="@{/user/login}">
+        <div class="card p-4">
+          <div th:text="#{login.tip}" class="card-header text-center text-uppercase h4 font-weight-light">
+            Login
+          </div>
+          <div class="form-group" style="text-align: center">
+            <!--只有判定后台有消息回传，才会显示此行信息-->
+            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+          </div>
+          <div class="card-body py-5">
+            <div class="form-group">
+              <label th:text="#{login.username}" class="form-control-label">Username</label>
+              <input th:placeholder="#{login.username}" name="username" type="text" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label th:text="#{login.password}" class="form-control-label">Password</label>
+              <input th:placeholder="#{login.password}" name="password" type="password" class="form-control" required>
+            </div>
+
+
+          </div>
+
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-6 custom-control custom-checkbox" style="padding-left: 40px">
+              <input type="checkbox" class="custom-control-input" id="login">
+              <label th:text="#{login.remember}" class="custom-control-label" for="login">Remember me</label>
+            </div>
+              <div class="col-6">
+                <button th:text="#{login.btn}" type="submit" class="btn btn-primary px-5">Login</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="col-6">
+                <a th:href="@{/index.html(l='zh_CN')}" class="btn btn-link">中文</a>
+                <a th:href="@{/index.html(l='en_US')}" class="btn btn-link">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/popper.js/popper.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/chart.js/chart.min.js}"></script>
+<script th:src="@{/js/carbon.js}"></script>
+<script th:src="@{/js/demo.js}"></script>
+</body>
+</html>

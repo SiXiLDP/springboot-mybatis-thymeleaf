@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pl.mapper.DepartmentMapper">
+
+    <insert id="addDepartment" parameterType="Department">
+        insert into emp.department (id, department) value
+        (#{id},#{department});
+    </insert>
+
+    <delete id="deleteDepartmentById" parameterType="int">
+        delete from emp.department where id=#{id};
+    </delete>
+
+    <update id="updateDepartment" parameterType="Employee">
+        update emp.department
+        set department=#{department}
+        where id=#{id};
+    </update>
+
+    <select id="queryDepartmentById" resultType="Department">
+        select * from emp.department where id=#{id};
+    </select>
+
+    <select id="queryDepartment" resultType="Department">
+        select * from emp.department;
+    </select>
+
+    <select id="queryDepartmentByName" resultType="Department">
+        select * from emp.department where department.=#{department};
+    </select>
+</mapper>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carbon - Admin Template</title>
+  <link rel="stylesheet" th:href="@{/vendor/simple-line-icons/css/simple-line-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/fontawesome-all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+  <div class="page-header">
+    <div th:replace="~{common/common::navbar}"></div>
+  </div>
+
+  <div class="main-container">
+    <div th:replace="~{common/common::sidebar(active='tables.html')}"></div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header bg-light">
+              员工信息表
+            </div>
+            <div class="card-header bg-light">
+              <a class="btn btn-sm btn-success" th:href="@{/emp}">新增员工</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Birth</th>
+                    <th>操作</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="emp:${emps}">
+                    <td th:text="${emp.id}"></td>
+                    <td th:text="${emp.name}"></td>
+                    <td th:text="${emp.email}"></td>
+                    <td th:text="${emp.gender==0?'女':'男'}"></td>
+                    <td th:text="${emp.getDepartment()}"></td>
+                    <td th:text="${emp.birth}"></td>
+                    <td>
+                      <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
+                      <a class="btn btn-sm btn-danger" th:href="@{/del/}+${emp.id}">删除</a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/popper.js/popper.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/chart.js/chart.min.js}"></script>
+<script th:src="@{/js/carbon.js}"></script>
+<script th:src="@{/js/demo.js}"></script>
+</body>
+</html>
