@@ -9,6 +9,7 @@ spring:
 # 我们的配置文件放在的真实位置
   messages:
     basename: i18n.login
+# mapper的配置，同等与springmvc里面的的spring-mapper.xml配置文件
 mybatis:
   type-aliases-package: com.pl.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
