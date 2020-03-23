@@ -26,12 +26,7 @@ springboot+mybatis+thymeleaf简单整合，实现增删改查，一看就上手�
         }
         return locale;
     }
+```
+#### 增删改查等等
 
-#### 后续增删改查等等
-
-## 往后发展
-. 数据的分页显示
-. Security的授权和认证,密码的加密存储。
-. shiro 与springboot整合
-. ......永无止境
 . 
